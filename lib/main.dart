@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => Users(),
       child: MaterialApp(
         title: 'Lista de usuários',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

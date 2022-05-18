@@ -21,7 +21,7 @@ class UserTile extends StatelessWidget {
       ),
       title: Text(user.name),
       subtitle: Text(user.email),
-      trailing: Container(
+      trailing: SizedBox(
         width: 100,
         child: Row(
           children: <Widget>[
@@ -32,7 +32,7 @@ class UserTile extends StatelessWidget {
                   arguments: user,
                 );
               },
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
               color: Colors.orange[200],
             ),
             IconButton(
@@ -52,7 +52,6 @@ class UserTile extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context)
                                 .pop(true); // parametro para retorno no dialog
-
                           },
                           child: const Text(
                             'Sim',
@@ -60,9 +59,11 @@ class UserTile extends StatelessWidget {
                           )),
                     ],
                   ),
-                ).then((confirmed) => confirmed? Provider.of<Users>(context, listen: false).remove(user):null);
+                ).then((confirmed) => confirmed
+                    ? Provider.of<Users>(context, listen: false).remove(user)
+                    : null);
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               color: Colors.red,
             ),
           ],

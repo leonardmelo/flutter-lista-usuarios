@@ -21,7 +21,7 @@ class UserForm extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Formulário de Usuário"),
+        title: const Text("Formulário de Usuário"),
         actions: [
           IconButton(
               onPressed: () {
@@ -48,11 +48,11 @@ class UserForm extends StatelessWidget {
                   Navigator.of(context).pop();
                 }
               },
-              icon: Icon(Icons.save))
+              icon: const Icon(Icons.save))
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Form(
           key: _form,
           child: Column(
@@ -64,6 +64,7 @@ class UserForm extends StatelessWidget {
                     if (value == null || value.trim().isEmpty) {
                       return "Campo deve ser preenchido";
                     }
+                    return null;
                   },
                   onSaved: (value) => _formData['name'] = value.toString()),
               TextFormField(
@@ -74,11 +75,10 @@ class UserForm extends StatelessWidget {
                   initialValue: _formData['avatarUrl'],
                   decoration:
                       const InputDecoration(label: Text("Url do Avatar")),
-                  onSaved: (value) =>
-                      value.toString().isNotEmpty?
-                      _formData['avatarUrl'] = value.toString()
-              : _formData['avatarUrl'] ='https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868_960_720.png')
-              ,
+                  onSaved: (value) => value.toString().isNotEmpty
+                      ? _formData['avatarUrl'] = value.toString()
+                      : _formData['avatarUrl'] =
+                          'https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868_960_720.png'),
             ],
           ),
         ),
